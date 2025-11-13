@@ -8,6 +8,7 @@ export const storageService = {
     getTopics: (): Topic[] => {
         try {
             const stored = localStorage.getItem( TOPICS_KEY );
+
             return stored ? JSON.parse( stored ) : [];
         } catch {
             return [];
@@ -18,6 +19,7 @@ export const storageService = {
         const topics = storageService.getTopics();
         topics.unshift( topic );
         localStorage.setItem( TOPICS_KEY, JSON.stringify( topics ) );
+
         return topic;
     },
 
@@ -28,6 +30,7 @@ export const storageService = {
     searchTopics: ( query: string ): Topic[] => {
         const topics = storageService.getTopics();
         const lowerQuery = query.toLowerCase();
+
         return topics.filter(
             topic => topic.title.toLowerCase().includes( lowerQuery ) ||
                 topic.content.toLowerCase().includes( lowerQuery )
