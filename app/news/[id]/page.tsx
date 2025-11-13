@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { NewsService } from '@/service/NewsService';
 import { NewsDetailContent } from '@/components/NewsDetailContent';
-import { SimilarTopics } from '@/components/SimilarTopics';
 
 interface NewsDetailPageProps {
     params: Promise<{
