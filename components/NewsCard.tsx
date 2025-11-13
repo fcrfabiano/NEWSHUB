@@ -5,7 +5,6 @@ import { Calendar, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { formatDistanceToNow } from '@/lib/utils';
 import Image from 'next/image';
-import HtmlContent from './HtmlContext';
 
 interface NewsCardProps {
     article: Article;
@@ -23,7 +22,6 @@ export function NewsCard( { article }: NewsCardProps ) {
                             className="w-full h-full object-cover transition-transform hover:scale-105"
                             width={390}
                             height={220}
-                            objectFit="cover"
                         />
                     </div>
                 )}
@@ -40,7 +38,7 @@ export function NewsCard( { article }: NewsCardProps ) {
                     </div>
                     <CardTitle className="line-clamp-2 text-xl">{article.title}</CardTitle>
                     <CardDescription className="line-clamp-3 mt-2">
-                        <HtmlContent html={article.description}/>
+                        { article.description }
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

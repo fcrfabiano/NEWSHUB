@@ -13,7 +13,7 @@ import { Separator } from '@/components/ui/separator';
 import { Calendar, ExternalLink, ArrowLeft } from 'lucide-react';
 import { formatDistanceToNow } from '@/lib/utils';
 import Image from 'next/image';
-import HtmlContent from './HtmlContext';
+import HtmlContent from './HtmlContent';
 
 type SimilarTopic = Topic & { similarity: number };
 
