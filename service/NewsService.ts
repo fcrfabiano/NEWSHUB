@@ -1,11 +1,11 @@
-import { Article, ArticleResponse } from '@/types';
+import { Article, ArticleResponse, PaginatedArticles } from '@/types';
 import { HttpClient } from '@/lib/http-client';
 import { HNSearchResponseSchema } from '@/schemas/hn-api.schema';
 import { HNApiMapper } from '@/mappers/hn-api.mapper';
 import { getCategoryTag } from '@/schemas/news.schema';
 
 export class NewsService {
-    static async fetchNews( category?: string, page: number = 0 ): Promise<Article[]> {
+    static async fetchNews( category?: string, page: number = 1 ): Promise<PaginatedArticles> {
         try {
             const tags = getCategoryTag( category );
 
@@ -17,7 +17,13 @@ export class NewsService {
 
             const validatedData = HNSearchResponseSchema.parse( data );
 
-            return HNApiMapper.toArticles( validatedData.hits );
+            return {
+                articles: HNApiMapper.toArticles( validatedData.hits ),
+                page: validatedData.page,
+                nbPages: validatedData.nbPages,
+                hasNextPage: validatedData.page < validatedData.nbPages - 1,
+                hasPrevPage: validatedData.page > 0
+            };
         } catch ( error ) {
             console.error( 'Error fetching news:', error );
             throw error;
