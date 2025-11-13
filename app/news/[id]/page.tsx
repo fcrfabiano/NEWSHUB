@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { NewsService } from '@/service/NewsService';
 import { NewsDetailContent } from '@/components/NewsDetailContent';
-import { TopicCard } from '@/components/TopicCard';
 import { SimilarTopics } from '@/components/SimilarTopics';
 
 interface NewsDetailPageProps {
@@ -29,9 +28,6 @@ export default async function NewsDetailPage( { params }: NewsDetailPageProps ) 
     }
 
     return (
-        <>
-            <NewsDetailContent article={article} />
-            <SimilarTopics articleTitle={article.title} />
-        </>
+        <NewsDetailContent article={article} />
     );
 }

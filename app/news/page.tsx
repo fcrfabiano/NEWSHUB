@@ -1,15 +1,13 @@
 import { NewsCard } from '@/components/NewsCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { NewsService } from '@/service/NewsService';
-import { AlertCircle, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import type { PaginatedArticles } from '@/types';
 import {
     Pagination,
     PaginationContent,
     PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious
+    PaginationLink
 } from '@/components/ui/pagination';
 import Link from 'next/link';
 
