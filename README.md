@@ -1,46 +1,82 @@
-# OFICINA_BRASIL_2025
+# NEWSHUB
 
 Esse repositório é um teste técnico, o objetivo é desenvolver uma aplicação de notícias.
 
+## BAIXANDO
+
+```sh
+git clone git@github.com:fcrfabiano/NEWSHUB.git
+cd NEWSHUB
+```
+
+## INSTALANDO DEPENDÊNCIAS
+
+```sh
+npm install
+```
+
+ou
+
+```sh
+yarn
+```
+
+## RODANDO O PROJETO
+
+```sh
+npm run dev
+```
+
+ou
+
+```sh
+yarn dev
+```
+
 ## TECNOLOGIAS
 
-- Next.js
+- Next.js (App Router)
 - Typescript
-- SSE ou Websocket (ainda decidindo)
+- Zod
+- Shadcn
+- Tailwind
 
 ## ARQUITETURA
 
 ```
 OFICINA_BRASIL_2025/
-├─ data/
-│  └─ topics.json
 ├─ app/
 │  ├─ news/
-│  │  ├─ page.tsx           # /news?page=&category=
-│  │  └─ [id].tsx            # /news/[id]
-│  ├─ forum.tsx              # /forum?q=
+│  │  ├─ page.tsx            # /news?page=&category=
+│  │  └─ [id]/
+│  │     └─ page.tsx         # /news/:id
+│  ├─ forum/
+│     └─ page.tsx            # /forum?q=
 │  └─ api/
-│     ├─ news.ts             # opcional: proxy/facade para Algolia HN
-│     └─ topics/
-│        ├─ index.ts         # GET/POST topics
-│        └─ stream.ts        # SSE stream
+│     ├─ news.ts             # opcional: proxy/facade para Algolia
 ├─ components/
-│  ├─ TopicList.tsx
 │  ├─ TopicForm.tsx
-│  └─ NewsCard.tsx
+│  ├─ TopicCard.tsx
+│  ├─ NewsDetailContent.tsx
+│  ├─ NavLink.tsx
+│  ├─ NavBar.tsx
+│  ├─ HtmlContent.tsx
+│  ├─ NewsCard.tsx
+├─ └─ ui/                            # shadcn componentes
 ├─ lib/
-│  ├─ topicsStore.ts        # lógica de leitura/escrita do JSON + broadcast SSE
-│  └─ similarity.ts         # função de similaridade
+│  ├─ application-settings.ts        # url da api
+│  ├─ http-client.ts                 # cliente http
+│  ├─ utils.ts                       # utilidades
+│  ├─ storage.ts                     # local storage
+│  └─ similarity.ts                  # função de similaridade
 ├─ types/
 │  └─ index.ts
+├─ mappers/
+│  └─ hn-api.mapper.ts
+├─ schemas/
+│  ├─ hn-api.schema.ts
+│  ├─ news.schema.ts
+│  └─ topic.schema.ts
+├─ hooks/
+│  └─ useToast.ts
 ```
-
-## ROTAS
-
-- `/news` — lista de notícias por categoria (?category=) com SSR e paginação.
-- `/news/[id]` — detalhe da notícia + tópicos vinculados + botão criar tópico (form).
-- `/api/topics` — cria / lista tópicos (persistência em arquivo JSON).
-- *SSE* `(/api/topics/stream)` — notifica clientes em tempo real quando surgem tópicos (para atualizar lista em tempo real).
-- `/forum?q=` — busca textual simples por tópicos (título/conteúdo, case-insensitive).
-
-##
