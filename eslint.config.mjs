@@ -18,7 +18,8 @@ const eslintConfig = defineConfig( [
             'array-bracket-spacing': [ 'error', 'always' ],
             'space-in-parens': [ 'error', 'always' ],
             indent: [ 'error', 4, { SwitchCase: 1 } ],
-            'comma-dangle': [ 'error', 'never' ]
+            'comma-dangle': [ 'error', 'never' ],
+            semi: [ 'error', 'always' ]
         }
     }
 ] );
