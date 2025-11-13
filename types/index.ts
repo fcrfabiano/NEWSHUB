@@ -14,6 +14,14 @@ export interface Article {
     author?: string;
 }
 
+export interface PaginatedArticles {
+    articles: Article[];
+    page: number;
+    nbPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+}
+
 export interface Topic {
     id: string;
     articleId: string;
@@ -21,6 +29,7 @@ export interface Topic {
     content: string;
     createdAt: string;
     author: string;
+    similarity?: number;
 }
 
 export interface NewsApiResponse {
